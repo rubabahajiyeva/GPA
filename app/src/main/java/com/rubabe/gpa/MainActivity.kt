@@ -11,9 +11,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         binding.tVNext.setOnClickListener {
             startActivity(Intent(this, CalculatorActivity::class.java))
         }
-        setContentView(binding.root)
     }
 }
