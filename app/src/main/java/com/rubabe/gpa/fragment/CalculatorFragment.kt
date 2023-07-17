@@ -15,7 +15,8 @@ import com.rubabe.gpa.databinding.FragmentCalculatorBinding
 import kotlin.math.round
 
 class CalculatorFragment : Fragment() {
-lateinit var binding:FragmentCalculatorBinding
+    lateinit var binding: FragmentCalculatorBinding
+
     // Result score of subjects
     private val multiples = IntArray(7)
     private var sum = 0
@@ -58,8 +59,6 @@ lateinit var binding:FragmentCalculatorBinding
                 if (checkSubjectScores()) {
                     calculateGPA()
                     showGPAResult()
-                } else {
-                    showToast("Subject score should not exceed 100")
                 }
             } else {
                 showToast("Please enter all the information")
@@ -131,26 +130,21 @@ lateinit var binding:FragmentCalculatorBinding
     }
 
     private fun checkSubjectScores(): Boolean {
-        return binding.linearLayout1.isVisible &&
-                (binding.editTextNumber1.text.toString().toInt() <= 100) ||
+        val subjectScores = listOf(
+            binding.editTextNumber1.text.toString().toIntOrNull(),
+            binding.editTextNumber4.text.toString().toIntOrNull(),
+            binding.editTextNumber7.text.toString().toIntOrNull(),
+            binding.editTextNumber10.text.toString().toIntOrNull(),
+            binding.editTextNumber13.text.toString().toIntOrNull(),
+            binding.editTextNumber16.text.toString().toIntOrNull(),
+            binding.editTextNumber19.text.toString().toIntOrNull()
+        )
 
-                binding.linearLayout2.isVisible &&
-                (binding.editTextNumber4.text.toString().toInt() <= 100) ||
-
-                binding.linearLayout3.isVisible &&
-                (binding.editTextNumber7.text.toString().toInt() <= 100) ||
-
-                binding.linearLayout4.isVisible &&
-                (binding.editTextNumber10.text.toString().toInt() <= 100) ||
-
-                binding.linearLayout5.isVisible &&
-                (binding.editTextNumber13.text.toString().toInt() <= 100) ||
-
-                binding.linearLayout6.isVisible &&
-                (binding.editTextNumber16.text.toString().toInt() <= 100) ||
-
-                binding.linearLayout7.isVisible &&
-                (binding.editTextNumber19.text.toString().toInt() <= 100)
+        val exceedsLimit = subjectScores.any { it != null && it > 100 }
+        if (exceedsLimit) {
+            showToast("Subject score should not exceed 100")
+        }
+        return !exceedsLimit
     }
 
     private fun calculateGPA() {
@@ -230,6 +224,7 @@ lateinit var binding:FragmentCalculatorBinding
             else -> "$gpaRounded -> Fail"
         }
     }
+
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }

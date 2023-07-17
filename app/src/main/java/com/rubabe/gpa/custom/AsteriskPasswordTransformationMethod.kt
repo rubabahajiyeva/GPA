@@ -9,7 +9,13 @@ class AsteriskPasswordTransformationMethod : TransformationMethod {
         return PasswordCharSequence(source)
     }
 
-    override fun onFocusChanged(view: View, sourceText: CharSequence, focused: Boolean, direction: Int, previouslyFocusedRect: Rect?) {
+    override fun onFocusChanged(
+        view: View,
+        sourceText: CharSequence,
+        focused: Boolean,
+        direction: Int,
+        previouslyFocusedRect: Rect?
+    ) {
         // No implementation needed
     }
 
@@ -22,7 +28,10 @@ class AsteriskPasswordTransformationMethod : TransformationMethod {
         }
 
         override fun subSequence(startIndex: Int, endIndex: Int): CharSequence {
-            return source.subSequence(startIndex, endIndex) // Return the original text for copying, cutting, etc.
+            return source.subSequence(
+                startIndex,
+                endIndex
+            ) // Return the original text for copying, cutting, etc.
         }
     }
 }

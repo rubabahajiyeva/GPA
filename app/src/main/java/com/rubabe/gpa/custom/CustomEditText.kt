@@ -12,7 +12,9 @@ import androidx.core.widget.TextViewCompat
 import com.rubabe.gpa.R
 
 class CustomEditText @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = androidx.appcompat.R.attr.editTextStyle
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = androidx.appcompat.R.attr.editTextStyle
 ) : AppCompatEditText(context, attrs, defStyleAttr) {
 
     private var drawableStart: Drawable? = null
@@ -33,7 +35,8 @@ class CustomEditText @JvmOverloads constructor(
         drawableEnd = a.getDrawable(R.styleable.CustomEditText_drawableEndCompat)
         drawableTop = a.getDrawable(R.styleable.CustomEditText_drawableTopCompat)
         drawableBottom = a.getDrawable(R.styleable.CustomEditText_drawableBottomCompat)
-        val customTextAppearance = a.getResourceId(R.styleable.CustomEditText_customTextAppearance, 0)
+        val customTextAppearance =
+            a.getResourceId(R.styleable.CustomEditText_customTextAppearance, 0)
         drawableStart = ContextCompat.getDrawable(context, R.drawable.password_custom_privacy)
         drawableEnd = ContextCompat.getDrawable(context, R.drawable.password_visibility_off_icon)
         if (customTextAppearance != 0) {
@@ -70,7 +73,8 @@ class CustomEditText @JvmOverloads constructor(
             drawableEnd = ContextCompat.getDrawable(context, R.drawable.password_visibility_icon)
             transformationMethod = null
         } else {
-            drawableEnd = ContextCompat.getDrawable(context, R.drawable.password_visibility_off_icon)
+            drawableEnd =
+                ContextCompat.getDrawable(context, R.drawable.password_visibility_off_icon)
             transformationMethod = AsteriskPasswordTransformationMethod()
         }
 

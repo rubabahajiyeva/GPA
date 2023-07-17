@@ -10,14 +10,8 @@ import com.rubabe.gpa.R
 import com.rubabe.gpa.databinding.FragmentInformationBinding
 
 
-
 class InformationFragment : Fragment() {
-  private lateinit var binding:FragmentInformationBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private lateinit var binding: FragmentInformationBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -1,7 +1,6 @@
 package com.rubabe.gpa.fragment
 
 
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,7 +16,11 @@ class WelcomeFragment : Fragment() {
     lateinit var binding: FragmentWelcomeBinding
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
@@ -32,7 +35,7 @@ class WelcomeFragment : Fragment() {
         binding.switchMode.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            }else{
+            } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
