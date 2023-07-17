@@ -12,7 +12,7 @@ class WelcomeActivity : AppCompatActivity() {
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.asGuestButton.setOnClickListener {
+      /*  binding.asGuestButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
@@ -20,7 +20,7 @@ class WelcomeActivity : AppCompatActivity() {
         binding.signUpButton.setOnClickListener{
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
-        }
+        }*/
 
     }
 }

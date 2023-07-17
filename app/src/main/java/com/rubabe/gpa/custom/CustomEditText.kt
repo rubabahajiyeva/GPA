@@ -39,12 +39,14 @@ class CustomEditText @JvmOverloads constructor(
         if (customTextAppearance != 0) {
             TextViewCompat.setTextAppearance(this, customTextAppearance)
         }
-        val typedArray = context.obtainStyledAttributes(attrs, intArrayOf(android.R.attr.textColorHint))
+        val typedArray = context.obtainStyledAttributes(attrs, intArrayOf(R.color.black))
         val colorHint = typedArray.getResourceId(0, R.color.black)
+        val colorText = typedArray.getResourceId(0, R.color.black)
         typedArray.recycle()
 
         // Set the hint text color using the color resource
         setHintTextColor(ContextCompat.getColor(context, colorHint))
+        setTextColor(ContextCompat.getColor(context, colorText))
         a.recycle()
         updateCompoundDrawables()
 

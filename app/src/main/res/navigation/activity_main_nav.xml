@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_nav"
+    app:startDestination="@id/welcomeFragment">
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.rubabe.gpa.fragment.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/switchFromWelcomeFragmentToInformationFragment"
+            app:destination="@id/informationFragment" />
+        <action
+            android:id="@+id/switchFromWelcomeFragmentToSignUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/informationFragment"
+        android:name="com.rubabe.gpa.fragment.InformationFragment"
+        android:label="fragment_information"
+        tools:layout="@layout/fragment_information" >
+        <action
+            android:id="@+id/switchFromInformationFragmentToCalculatorFragment"
+            app:destination="@id/calculatorFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.rubabe.gpa.fragment.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/switchFromSignUpToInformationFragment"
+            app:destination="@id/informationFragment" />
+        <action
+            android:id="@+id/switchFromSignUpFragmentToWelcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/calculatorFragment2"
+        android:name="com.rubabe.gpa.fragment.CalculatorFragment"
+        android:label="fragment_calculator"
+        tools:layout="@layout/fragment_calculator" />
+</navigation>

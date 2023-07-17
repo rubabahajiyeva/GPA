@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bitter_sweet">#FE7762</color>
+    <color name="gray_3">#828282</color>
+    <color name="pink">#E91E63</color>
+    <color name="background">#EEEEEE</color>
+    <color name="blue">#3F51B5</color>
+    <color name="dark_blue">#2E3B85</color>
+    <color name="green">#165936</color>
+    <color name="text_color">#EEEEEE</color>
+    <color name="or_color">#EEEEEE</color>
+    <color name="sign_up_color">#FF000000</color>
+    <color name="good_luck_color">#FFEB3B</color>
+    <color name="text_input_color">#F44336</color>
+    <color name="text_input_background_color">#FFFFFFFF</color>
+    <color name="gpa_color">#FFEB3B</color>
+    <color name="box_color">#FFEB3B</color>
+    <color name="information_color">#FFFFFFFF</color>
+    <color name="next_color">#FFFFFFFF</color>
+    <color name="info_text_color">#FFEB3B</color>
+</resources>

@@ -15,7 +15,7 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.backIcon.setOnClickListener {
+    /*    binding.backIcon.setOnClickListener {
             val intent = Intent(this, WelcomeActivity::class.java)
             startActivity(intent)
         }
@@ -26,7 +26,8 @@ class SignUpActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Enter your username and password", Toast.LENGTH_LONG).show()
             }
-        }
+        }*/
+
     }
 
     override fun onResume() {
@@ -35,4 +36,5 @@ class SignUpActivity : AppCompatActivity() {
         binding.editTextUsername.text.clear()
         binding.customEditText.text?.clear()
     }
+
 }
