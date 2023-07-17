@@ -41,5 +41,14 @@
         android:id="@+id/calculatorFragment2"
         android:name="com.rubabe.gpa.fragment.CalculatorFragment"
         android:label="fragment_calculator"
-        tools:layout="@layout/fragment_calculator" />
+        tools:layout="@layout/fragment_calculator" >
+        <action
+            android:id="@+id/switchFromCalculatorFragmentToStorageFragment"
+            app:destination="@id/storageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/storageFragment"
+        android:name="com.rubabe.gpa.fragment.StorageFragment"
+        android:label="fragment_storage"
+        tools:layout="@layout/fragment_storage" />
 </navigation>

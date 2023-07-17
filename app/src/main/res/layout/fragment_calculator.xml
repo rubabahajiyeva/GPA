@@ -628,11 +628,10 @@
                     android:textSize="@dimen/sp_24"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="@id/constraintLayout1"
                     app:layout_constraintTop_toBottomOf="@+id/buttonCompute" />
 
                 <TextView
-                    android:id="@+id/textView29"
+                    android:id="@+id/resultText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_4"
@@ -645,8 +644,33 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView28"
-                    app:layout_constraintBottom_toBottomOf="@id/constraintLayout1"
                     app:layout_constraintTop_toBottomOf="@+id/buttonCompute" />
+
+
+                <TextView
+                    android:id="@+id/addToStorage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Add the result to storage"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/manrope_semibold"
+                    app:layout_constraintBottom_toBottomOf="@id/constraintLayout1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView28" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/addButton"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="24dp"
+                    android:background="@drawable/add_button"
+                    app:layout_constraintBottom_toBottomOf="@id/addToStorage"
+                    app:layout_constraintStart_toEndOf="@id/addToStorage"
+                    app:layout_constraintTop_toTopOf="@+id/addToStorage" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
