@@ -52,13 +52,17 @@ class CalculatorFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun setUpListeners() {
         binding.buttonCompute.setOnClickListener {
-            if (checkEditTexts()) {
-                if (checkSubjectScores()) {
-                    calculateGPA()
-                    showGPAResult()
+            if (comparison()) {
+                if (checkEditTexts()) {
+                    if (checkSubjectScores()) {
+                        calculateGPA()
+                        showGPAResult()
+                    }
+                } else {
+                    showToast("Please enter all the information")
                 }
             } else {
-                showToast("Please enter all the information")
+                showToast("k* must be less than or equal to k")
             }
         }
     }
@@ -227,4 +231,31 @@ class CalculatorFragment : Fragment() {
         Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }
 
+    private fun comparison(): Boolean {
+        return if ((binding.linearLayout1.visibility == View.VISIBLE && binding.editTextNumber2.text.toString()
+                .toInt() <= binding.editTextNumber3.text.toString().toInt()) &&
+            (binding.linearLayout2.visibility == View.VISIBLE && binding.editTextNumber5.text.toString()
+                .toInt() <= binding.editTextNumber6.text.toString().toInt())
+            &&
+            (binding.linearLayout3.visibility == View.VISIBLE && binding.editTextNumber8.text.toString()
+                .toInt() <= binding.editTextNumber9.text.toString().toInt())
+            &&
+            (binding.linearLayout4.visibility == View.VISIBLE && binding.editTextNumber11.text.toString()
+                .toInt() <= binding.editTextNumber12.text.toString().toInt())
+            &&
+            (binding.linearLayout5.visibility == View.VISIBLE && binding.editTextNumber14.text.toString()
+                .toInt() <= binding.editTextNumber15.text.toString().toInt())
+            &&
+            (binding.linearLayout6.visibility == View.VISIBLE && binding.editTextNumber17.text.toString()
+                .toInt() <= binding.editTextNumber18.text.toString().toInt()) &&
+            (binding.linearLayout7.visibility == View.VISIBLE && binding.editTextNumber20.text.toString()
+                .toInt() <= binding.editTextNumber21.text.toString().toInt())
+
+        ) {
+            true
+        } else {
+            return false
+        }
+
+    }
 }
