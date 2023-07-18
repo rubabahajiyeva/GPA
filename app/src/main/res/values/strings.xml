@@ -34,10 +34,6 @@
     <string name="k1_k2_kn_are_credits_earned_in_subjects">k1*, k2*,..kn* are credits earned in subjects</string>
     <string name="k1_k2_kn_are_corresponding_credits_provided_in_the_curriculum_for_the_subjects">k1, k2,..,kn are corresponding credits provided in the curriculum for the subjects</string>
     <string name="textview">TextView</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="as_guest">As Guest</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
     <string name="next"><![CDATA[Next >>]]></string>
 
 

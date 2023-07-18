@@ -28,10 +28,6 @@ class WelcomeFragment : Fragment() {
             findNavController().navigate(R.id.switchFromWelcomeFragmentToInformationFragment)
         }
 
-        binding.signUpButton.setOnClickListener {
-            findNavController().navigate(R.id.switchFromWelcomeFragmentToSignUpFragment)
-        }
-
         binding.switchMode.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

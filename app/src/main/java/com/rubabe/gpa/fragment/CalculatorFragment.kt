@@ -1,7 +1,6 @@
 package com.rubabe.gpa.fragment
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.navigation.fragment.findNavController
 import com.rubabe.gpa.R
 import com.rubabe.gpa.databinding.FragmentCalculatorBinding
 import kotlin.math.round
@@ -32,24 +30,13 @@ class CalculatorFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentCalculatorBinding.inflate(inflater, container, false)
-        val view = binding.root
-
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpListeners()
         hideAllLinearLayouts()
-
-            binding.addButton.setOnClickListener {
-                if (addToStorage()) {
-                findNavController().navigate(R.id.switchFromCalculatorFragmentToStorageFragment)
-            }
-                else{
-                    showToast("Result is empty")
-                }
-        }
     }
 
     override fun onResume() {
@@ -238,19 +225,6 @@ class CalculatorFragment : Fragment() {
 
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
-    }
-
-    private fun addToStorage(): Boolean {
-        return if (binding.resultText.text.toString() != " ") {
-            val sharedPreferences =
-                requireContext().getSharedPreferences("CalculatorPrefs", Context.MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putString("gpaResult", binding.resultText.text.toString())
-            editor.apply()
-            true
-        } else {
-            false
-        }
     }
 
 }

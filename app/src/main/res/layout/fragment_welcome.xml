@@ -21,48 +21,21 @@
     </com.airbnb.lottie.LottieAnimationView>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/signUpButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_32"
-        android:background="@drawable/round_button"
-        android:padding="10dp"
-        android:text="@string/sign_up"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/sp_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeAnimation" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_12"
-        android:fontFamily="@font/manrope_semibold"
-        android:text="@string/or"
-        android:textColor="@color/or_color"
-        android:textSize="@dimen/sp_20"
-        app:layout_constraintEnd_toStartOf="@+id/asGuestButton"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toEndOf="@+id/signUpButton"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeAnimation" />
-
-    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/asGuestButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dp_32"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/round_button"
         android:fontFamily="@font/manrope_semibold"
         android:padding="10dp"
-        android:text="@string/as_guest"
+        android:text="@string/next"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/text_color"
         android:textSize="@dimen/sp_24"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeAnimation" />
 
 
