@@ -12,11 +12,11 @@
     <color name="text_color">#EEEEEE</color>
     <color name="or_color">#EEEEEE</color>
     <color name="sign_up_color">#FF000000</color>
-    <color name="good_luck_color">#FFEB3B</color>
+    <color name="good_luck_color">#165936</color>
     <color name="text_input_color">#F44336</color>
-    <color name="text_input_background_color">#FFFFFFFF</color>
-    <color name="gpa_color">#FFEB3B</color>
-    <color name="box_color">#FFEB3B</color>
+    <color name="text_input_background_color">#615C5C</color>
+    <color name="gpa_color">#165936</color>
+    <color name="box_color">#7A0909</color>
     <color name="information_color">#FFFFFFFF</color>
     <color name="next_color">#FFFFFFFF</color>
     <color name="info_text_color">#FFEB3B</color>

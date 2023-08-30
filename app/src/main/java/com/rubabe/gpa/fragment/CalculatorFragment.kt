@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -17,17 +18,13 @@ import kotlin.math.round
 class CalculatorFragment : Fragment() {
     lateinit var binding: FragmentCalculatorBinding
 
-    // Result score of subjects
-    private val multiples = IntArray(7)
-    private var sum = 0
-    private var sumOfTotalCredit = 0
     private var gpa = 0.0
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentCalculatorBinding.inflate(inflater, container, false)
         return binding.root
@@ -35,9 +32,19 @@ class CalculatorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpListeners()
         hideAllLinearLayouts()
+        setUpListeners()
     }
+
+    private fun setUpListeners() {
+        binding.buttonCompute.setOnClickListener {
+            if (checkAllEditTextFields()) {
+                calculateGPA()
+            }
+
+        }
+    }
+
 
     override fun onResume() {
         super.onResume()
@@ -49,28 +56,12 @@ class CalculatorFragment : Fragment() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun setUpListeners() {
-        binding.buttonCompute.setOnClickListener {
-            if (comparison()) {
-                if (checkEditTexts()) {
-                    if (checkSubjectScores()) {
-                        calculateGPA()
-                        showGPAResult()
-                    }
-                } else {
-                    showToast("Please enter all the information")
-                }
-            } else {
-                showToast("k* must be less than or equal to k")
-            }
-        }
-    }
 
-    private fun hideAllLinearLayouts() {
+    private fun hideAllLinearLayouts(): Boolean {
         for (i in 0..7) {
             getLinearLayout(i)?.visibility = View.GONE
         }
+        return true
     }
 
     private fun showLinearLayouts(position: Int) {
@@ -93,131 +84,190 @@ class CalculatorFragment : Fragment() {
         }
     }
 
-    private fun checkEditTexts(): Boolean {
-        return binding.linearLayout1.isVisible &&
-                binding.editTextNumber1.text.isNotEmpty() &&
-                binding.editTextNumber2.text.isNotEmpty() &&
-                binding.editTextNumber3.text.isNotEmpty() ||
-
-                binding.linearLayout2.isVisible &&
-                binding.editTextNumber4.text.isNotEmpty() &&
-                binding.editTextNumber5.text.isNotEmpty() &&
-                binding.editTextNumber6.text.isNotEmpty() ||
-
-                binding.linearLayout3.isVisible &&
-                binding.editTextNumber7.text.isNotEmpty() &&
-                binding.editTextNumber8.text.isNotEmpty() &&
-                binding.editTextNumber9.text.isNotEmpty() ||
-
-                binding.linearLayout4.isVisible &&
-                binding.editTextNumber10.text.isNotEmpty() &&
-                binding.editTextNumber11.text.isNotEmpty() &&
-                binding.editTextNumber12.text.isNotEmpty() ||
-
-                binding.linearLayout5.isVisible &&
-                binding.editTextNumber13.text.isNotEmpty() &&
-                binding.editTextNumber14.text.isNotEmpty() &&
-                binding.editTextNumber15.text.isNotEmpty() ||
-
-                binding.linearLayout6.isVisible &&
-                binding.editTextNumber16.text.isNotEmpty() &&
-                binding.editTextNumber17.text.isNotEmpty() &&
-                binding.editTextNumber18.text.isNotEmpty() ||
-
-                binding.linearLayout7.isVisible &&
-                binding.editTextNumber19.text.isNotEmpty() &&
-                binding.editTextNumber20.text.isNotEmpty() &&
-                binding.editTextNumber21.text.isNotEmpty()
-    }
-
-    private fun checkSubjectScores(): Boolean {
-        val subjectScores = listOf(
-            binding.editTextNumber1.text.toString().toIntOrNull(),
-            binding.editTextNumber4.text.toString().toIntOrNull(),
-            binding.editTextNumber7.text.toString().toIntOrNull(),
-            binding.editTextNumber10.text.toString().toIntOrNull(),
-            binding.editTextNumber13.text.toString().toIntOrNull(),
-            binding.editTextNumber16.text.toString().toIntOrNull(),
-            binding.editTextNumber19.text.toString().toIntOrNull()
-        )
-
-        val exceedsLimit = subjectScores.any { it != null && it > 100 }
-        if (exceedsLimit) {
-            showToast("Subject score should not exceed 100")
+    fun checkEditText(linearLayout: LinearLayout, editTextIds: List<Int>): Boolean {
+        if (linearLayout.isVisible) {
+            for (editTextId in editTextIds) {
+                val editText = linearLayout.findViewById<EditText>(editTextId)
+                if (editText.text.toString().isEmpty()) {
+                    showToast("Please enter all the information")
+                    return false
+                }
+            }
+            return true
         }
-        return !exceedsLimit
+
+        else{
+            binding.resultText.text = ""
+            return false
+        }
     }
+
+    fun checkAllEditTextFields(): Boolean {
+        val layout1 = binding.linearLayout1
+        val layout2 = binding.linearLayout2
+        val layout3 = binding.linearLayout3
+        val layout4 = binding.linearLayout4
+        val layout5 = binding.linearLayout5
+        val layout6 = binding.linearLayout6
+        val layout7 = binding.linearLayout7
+
+        val editTextIdsLayout1 =
+            listOf(R.id.editTextNumber1, R.id.editTextNumber2, R.id.editTextNumber3)
+        val editTextIdsLayout2 =
+            listOf(R.id.editTextNumber4, R.id.editTextNumber5, R.id.editTextNumber6)
+        val editTextIdsLayout3 =
+            listOf(R.id.editTextNumber7, R.id.editTextNumber8, R.id.editTextNumber9)
+        val editTextIdsLayout4 =
+            listOf(R.id.editTextNumber10, R.id.editTextNumber11, R.id.editTextNumber12)
+        val editTextIdsLayout5 =
+            listOf(R.id.editTextNumber13, R.id.editTextNumber14, R.id.editTextNumber15)
+        val editTextIdsLayout6 =
+            listOf(R.id.editTextNumber16, R.id.editTextNumber17, R.id.editTextNumber18)
+        val editTextIdsLayout7 =
+            listOf(R.id.editTextNumber19, R.id.editTextNumber20, R.id.editTextNumber21)
+
+
+
+         if (layout1.isVisible && layout2.isVisible && layout3.isVisible && layout4.isVisible && layout5.isVisible && layout6.isVisible && layout7.isVisible) {
+            checkEditText(layout1, editTextIdsLayout1) && checkEditText(
+                layout2,
+                editTextIdsLayout2
+            )
+                    && checkEditText(layout3, editTextIdsLayout3) && checkEditText(
+                layout4,
+                editTextIdsLayout4
+            )
+                    && checkEditText(layout5, editTextIdsLayout5) && checkEditText(
+                layout6,
+                editTextIdsLayout6
+            )
+                    && checkEditText(layout7, editTextIdsLayout7)
+        }
+
+         else if (layout1.isVisible && layout2.isVisible && layout3.isVisible && layout4.isVisible && layout5.isVisible && layout6.isVisible) {
+             checkEditText(layout1, editTextIdsLayout1) && checkEditText(
+                 layout2,
+                 editTextIdsLayout2
+             )
+                     && checkEditText(layout3, editTextIdsLayout3) && checkEditText(
+                 layout4,
+                 editTextIdsLayout4
+             )
+                     && checkEditText(layout5, editTextIdsLayout5) && checkEditText(
+                 layout6,
+                 editTextIdsLayout6
+             )
+         }
+         else if (layout1.isVisible && layout2.isVisible && layout3.isVisible && layout4.isVisible && layout5.isVisible) {
+             checkEditText(layout1, editTextIdsLayout1) && checkEditText(
+                 layout2,
+                 editTextIdsLayout2
+             )
+                     && checkEditText(layout3, editTextIdsLayout3) && checkEditText(
+                 layout4,
+                 editTextIdsLayout4
+             )
+                     && checkEditText(layout5, editTextIdsLayout5)
+         }
+
+         else if (layout1.isVisible && layout2.isVisible) {
+            checkEditText(layout1, editTextIdsLayout1) && checkEditText(layout2, editTextIdsLayout2)
+        } else if (layout1.isVisible && layout2.isVisible && layout3.isVisible) {
+            checkEditText(layout1, editTextIdsLayout1) && checkEditText(layout2, editTextIdsLayout2)
+                    && checkEditText(layout3, editTextIdsLayout3)
+        } else if (layout1.isVisible && layout2.isVisible && layout3.isVisible && layout4.isVisible) {
+            checkEditText(layout1, editTextIdsLayout1) && checkEditText(layout2, editTextIdsLayout2)
+                    && checkEditText(layout3, editTextIdsLayout3) && checkEditText(
+                layout4,
+                editTextIdsLayout4
+            )
+        }
+
+       else if (layout1.isVisible) {
+            checkEditText(layout1, editTextIdsLayout1)
+        }
+        return true
+    }
+
 
     private fun calculateGPA() {
-        sum = 0
-        sumOfTotalCredit = 0
-        multiples.fill(0)
+        var total = 0.0
+        val editText1Value = binding.editTextNumber1.text.toString().toIntOrNull() ?: 0
+        val editText2Value = binding.editTextNumber2.text.toString().toIntOrNull() ?: 0
+        val editText3Value = binding.editTextNumber3.text.toString().toIntOrNull() ?: 1
 
-        binding.apply {
-            if (binding.linearLayout1.isVisible) {
-                multiples[0] =
-                    editTextNumber1.text.toString().toInt() * editTextNumber2.text.toString()
-                        .toInt()
-                sum += multiples[0]
-                sumOfTotalCredit += editTextNumber3.text.toString().toInt()
+        val editText4Value = binding.editTextNumber4.text.toString().toIntOrNull() ?: 0
+        val editText5Value = binding.editTextNumber5.text.toString().toIntOrNull() ?: 0
+        val editText6Value = binding.editTextNumber6.text.toString().toIntOrNull() ?: 1
+
+
+        val editText7Value = binding.editTextNumber7.text.toString().toIntOrNull() ?: 0
+        val editText8Value = binding.editTextNumber8.text.toString().toIntOrNull() ?: 0
+        val editText9Value = binding.editTextNumber9.text.toString().toIntOrNull() ?: 1
+
+
+        val editText10Value = binding.editTextNumber10.text.toString().toIntOrNull() ?: 0
+        val editText11Value = binding.editTextNumber11.text.toString().toIntOrNull() ?: 0
+        val editText12Value = binding.editTextNumber12.text.toString().toIntOrNull() ?: 1
+
+
+        val editText13Value = binding.editTextNumber13.text.toString().toIntOrNull() ?: 0
+        val editText14Value = binding.editTextNumber14.text.toString().toIntOrNull() ?: 0
+        val editText15Value = binding.editTextNumber15.text.toString().toIntOrNull() ?: 1
+
+
+        val editText16Value = binding.editTextNumber16.text.toString().toIntOrNull() ?: 0
+        val editText17Value = binding.editTextNumber17.text.toString().toIntOrNull() ?: 0
+        val editText18Value = binding.editTextNumber18.text.toString().toIntOrNull() ?: 1
+
+        val editText19Value = binding.editTextNumber19.text.toString().toIntOrNull() ?: 0
+        val editText20Value = binding.editTextNumber20.text.toString().toIntOrNull() ?: 0
+        val editText21Value = binding.editTextNumber21.text.toString().toIntOrNull() ?: 1
+
+
+        if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible && binding.linearLayout4.isVisible && binding.linearLayout5.isVisible && binding.linearLayout6.isVisible && binding.linearLayout7.isVisible && editText5Value != 0 && editText8Value != 0 && editText11Value != 0 && editText14Value != 0 && editText17Value != 0 && editText20Value != 0) {
+            total = (((editText1Value * editText2Value) +
+                    (editText4Value * editText5Value) + (editText7Value * editText8Value) + (editText10Value * editText11Value) + (editText13Value * editText14Value) + (editText16Value * editText17Value) + (editText19Value * editText20Value)) / (editText3Value + editText6Value + editText9Value + editText12Value + editText15Value + editText18Value + editText21Value)).toDouble()
+        } else if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible && binding.linearLayout4.isVisible && binding.linearLayout5.isVisible && binding.linearLayout6.isVisible && editText5Value != 0 && editText8Value != 0 && editText11Value != 0 && editText14Value != 0 && editText17Value != 0) {
+            total = (((editText1Value * editText2Value) +
+                    (editText4Value * editText5Value) + (editText7Value * editText8Value) + (editText10Value * editText11Value) + (editText13Value * editText14Value) + (editText16Value * editText17Value)) / (editText3Value + editText6Value + editText9Value + editText12Value + editText15Value + editText18Value)).toDouble()
+        } else if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible && binding.linearLayout4.isVisible && binding.linearLayout5.isVisible && editText5Value != 0 && editText8Value != 0 && editText11Value != 0 && editText14Value != 0) {
+            total = (((editText1Value * editText2Value) +
+                    (editText4Value * editText5Value) + (editText7Value * editText8Value) + (editText10Value * editText11Value) + (editText13Value * editText14Value)) / (editText3Value + editText6Value + editText9Value + editText12Value + editText15Value)).toDouble()
+        } else if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible && binding.linearLayout4.isVisible && editText5Value != 0 && editText8Value != 0 && editText11Value != 0) {
+            total = (((editText1Value * editText2Value) +
+                    (editText4Value * editText5Value) + (editText7Value * editText8Value) + (editText10Value * editText11Value)) / (editText3Value + editText6Value + editText9Value + editText12Value)).toDouble()
+        } else if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible && editText5Value != 0 && editText8Value != 0) {
+            total = (((editText1Value * editText2Value) +
+                    (editText4Value * editText5Value) + (editText7Value * editText8Value)) / (editText3Value + editText6Value + editText9Value)).toDouble()
+        } else if (binding.linearLayout2.isVisible && editText5Value != 0) {
+            total = (((editText1Value * editText2Value) +
+                    (editText4Value * editText5Value)) / (editText3Value + editText6Value)).toDouble()
+            // Add similar terms for other layouts if needed
+        } else if (binding.linearLayout1.isVisible && editText2Value != 0) {
+            total = ((editText1Value * editText2Value) / editText3Value).toDouble()
+            // Add similar terms for other layouts if needed
+        }else{
+            binding.resultText.text = ""
+        }
+
+        if (editText1Value <= 100 && editText4Value <= 100 && editText7Value <= 100 && editText10Value <= 100 && editText13Value <= 100 && editText16Value <= 100 && editText19Value <= 100) {
+            if (editText2Value <= editText3Value && editText5Value <= editText6Value && editText8Value <= editText9Value && editText11Value <= editText12Value && editText14Value <= editText15Value && editText17Value <= editText18Value && editText20Value <= editText21Value) {
+                gpa = total
+                showGPAResult()
             }
-
-            if (binding.linearLayout2.isVisible) {
-                multiples[1] =
-                    editTextNumber4.text.toString().toInt() * editTextNumber5.text.toString()
-                        .toInt()
-                sum += multiples[1]
-                sumOfTotalCredit += editTextNumber6.text.toString().toInt()
+            else {
+                showToast("k* must be less than or equal to k")
             }
-
-            if (binding.linearLayout3.isVisible) {
-                multiples[2] =
-                    editTextNumber7.text.toString().toInt() * editTextNumber8.text.toString()
-                        .toInt()
-                sum += multiples[2]
-                sumOfTotalCredit += editTextNumber9.text.toString().toInt()
-            }
-
-            if (binding.linearLayout4.isVisible) {
-                multiples[3] =
-                    editTextNumber10.text.toString().toInt() * editTextNumber11.text.toString()
-                        .toInt()
-                sum += multiples[3]
-                sumOfTotalCredit += editTextNumber12.text.toString().toInt()
-            }
-
-            if (binding.linearLayout5.isVisible) {
-                multiples[4] =
-                    editTextNumber13.text.toString().toInt() * editTextNumber14.text.toString()
-                        .toInt()
-                sum += multiples[4]
-                sumOfTotalCredit += editTextNumber15.text.toString().toInt()
-            }
-
-            if (binding.linearLayout6.isVisible) {
-                multiples[5] =
-                    editTextNumber16.text.toString().toInt() * editTextNumber17.text.toString()
-                        .toInt()
-                sum += multiples[5]
-                sumOfTotalCredit += editTextNumber18.text.toString().toInt()
-            }
-
-            if (binding.linearLayout7.isVisible) {
-                multiples[6] =
-                    editTextNumber19.text.toString().toInt() * editTextNumber20.text.toString()
-                        .toInt()
-                sum += multiples[6]
-                sumOfTotalCredit += editTextNumber21.text.toString().toInt()
-            }
-            // Add calculations for other linear layouts
-
-            gpa = sum.toDouble() / sumOfTotalCredit.toDouble()
+        }  else {
+            showToast("Subject score should not exceed 100")
         }
     }
 
 
     @SuppressLint("SetTextI18n")
     private fun showGPAResult() {
+        println("total3: $gpa")
         val gpaRounded = round(gpa).toInt()
         binding.resultText.text = when (gpaRounded) {
             in 51..69 -> "$gpaRounded -> Well Result"
@@ -229,33 +279,5 @@ class CalculatorFragment : Fragment() {
 
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
-    }
-
-    private fun comparison(): Boolean {
-        return if ((binding.linearLayout1.visibility == View.VISIBLE && binding.editTextNumber2.text.toString()
-                .toInt() <= binding.editTextNumber3.text.toString().toInt()) &&
-            (binding.linearLayout2.visibility == View.VISIBLE && binding.editTextNumber5.text.toString()
-                .toInt() <= binding.editTextNumber6.text.toString().toInt())
-            &&
-            (binding.linearLayout3.visibility == View.VISIBLE && binding.editTextNumber8.text.toString()
-                .toInt() <= binding.editTextNumber9.text.toString().toInt())
-            &&
-            (binding.linearLayout4.visibility == View.VISIBLE && binding.editTextNumber11.text.toString()
-                .toInt() <= binding.editTextNumber12.text.toString().toInt())
-            &&
-            (binding.linearLayout5.visibility == View.VISIBLE && binding.editTextNumber14.text.toString()
-                .toInt() <= binding.editTextNumber15.text.toString().toInt())
-            &&
-            (binding.linearLayout6.visibility == View.VISIBLE && binding.editTextNumber17.text.toString()
-                .toInt() <= binding.editTextNumber18.text.toString().toInt()) &&
-            (binding.linearLayout7.visibility == View.VISIBLE && binding.editTextNumber20.text.toString()
-                .toInt() <= binding.editTextNumber21.text.toString().toInt())
-
-        ) {
-            true
-        } else {
-            return false
-        }
-
     }
 }

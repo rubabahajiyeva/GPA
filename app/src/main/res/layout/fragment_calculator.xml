@@ -29,7 +29,6 @@
                 android:layout_height="wrap_content">
 
 
-
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="wrap_content"
@@ -65,13 +64,13 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/dp_16"
                     android:layout_marginTop="@dimen/dp_16"
-                    android:background="@color/text_input_background_color"
-                    android:hint="@string/subject_count"
+                    android:outlineProvider="none"
+                    android:textColorHint="#7A0909"
                     app:boxBackgroundColor="@color/text_input_background_color"
                     app:boxStrokeColor="@color/box_color"
                     app:hintTextColor="@color/box_color"
@@ -86,6 +85,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
+
+                        android:textStyle="bold"
+                        android:fontFamily="@font/manrope_semibold"
                         android:inputType="none"
                         android:text="@string/_0" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -627,8 +629,8 @@
                     android:textColor="@color/gpa_color"
                     android:textSize="@dimen/sp_24"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="@id/constraintLayout1"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/buttonCompute" />
 
                 <TextView
@@ -643,9 +645,9 @@
                     android:textColor="@color/gpa_color"
                     android:textSize="@dimen/sp_24"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/constraintLayout1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView28"
-                    app:layout_constraintBottom_toBottomOf="@id/constraintLayout1"
                     app:layout_constraintTop_toBottomOf="@+id/buttonCompute" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

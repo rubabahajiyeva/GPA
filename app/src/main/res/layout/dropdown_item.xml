@@ -3,7 +3,7 @@
     android:id="@+id/textView3"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background"
+    android:background="@color/white"
     android:paddingStart="@dimen/dp_14"
     android:paddingEnd="@dimen/dp_14"
     android:paddingBottom="@dimen/dp_14"
