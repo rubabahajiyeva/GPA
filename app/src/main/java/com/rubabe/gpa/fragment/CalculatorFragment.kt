@@ -84,7 +84,7 @@ class CalculatorFragment : Fragment() {
         }
     }
 
-    fun checkEditText(linearLayout: LinearLayout, editTextIds: List<Int>): Boolean {
+    private fun checkEditText(linearLayout: LinearLayout, editTextIds: List<Int>): Boolean {
         if (linearLayout.isVisible) {
             for (editTextId in editTextIds) {
                 val editText = linearLayout.findViewById<EditText>(editTextId)
@@ -93,16 +93,11 @@ class CalculatorFragment : Fragment() {
                     return false
                 }
             }
-            return true
         }
-
-        else{
-            binding.resultText.text = ""
-            return false
-        }
+        return true
     }
 
-    fun checkAllEditTextFields(): Boolean {
+    private fun checkAllEditTextFields(): Boolean {
         val layout1 = binding.linearLayout1
         val layout2 = binding.linearLayout2
         val layout3 = binding.linearLayout3
@@ -128,62 +123,38 @@ class CalculatorFragment : Fragment() {
 
 
 
-         if (layout1.isVisible && layout2.isVisible && layout3.isVisible && layout4.isVisible && layout5.isVisible && layout6.isVisible && layout7.isVisible) {
-            checkEditText(layout1, editTextIdsLayout1) && checkEditText(
-                layout2,
-                editTextIdsLayout2
-            )
-                    && checkEditText(layout3, editTextIdsLayout3) && checkEditText(
-                layout4,
-                editTextIdsLayout4
-            )
-                    && checkEditText(layout5, editTextIdsLayout5) && checkEditText(
-                layout6,
-                editTextIdsLayout6
-            )
-                    && checkEditText(layout7, editTextIdsLayout7)
-        }
-
-         else if (layout1.isVisible && layout2.isVisible && layout3.isVisible && layout4.isVisible && layout5.isVisible && layout6.isVisible) {
-             checkEditText(layout1, editTextIdsLayout1) && checkEditText(
-                 layout2,
-                 editTextIdsLayout2
-             )
-                     && checkEditText(layout3, editTextIdsLayout3) && checkEditText(
-                 layout4,
-                 editTextIdsLayout4
-             )
-                     && checkEditText(layout5, editTextIdsLayout5) && checkEditText(
-                 layout6,
-                 editTextIdsLayout6
-             )
-         }
-         else if (layout1.isVisible && layout2.isVisible && layout3.isVisible && layout4.isVisible && layout5.isVisible) {
-             checkEditText(layout1, editTextIdsLayout1) && checkEditText(
-                 layout2,
-                 editTextIdsLayout2
-             )
-                     && checkEditText(layout3, editTextIdsLayout3) && checkEditText(
-                 layout4,
-                 editTextIdsLayout4
-             )
-                     && checkEditText(layout5, editTextIdsLayout5)
-         }
-
-         else if (layout1.isVisible && layout2.isVisible) {
-            checkEditText(layout1, editTextIdsLayout1) && checkEditText(layout2, editTextIdsLayout2)
-        } else if (layout1.isVisible && layout2.isVisible && layout3.isVisible) {
+        if (layout1.isVisible && layout2.isVisible && layout3.isVisible && layout4.isVisible
+            && layout5.isVisible && layout6.isVisible && layout7.isVisible) {
             checkEditText(layout1, editTextIdsLayout1) && checkEditText(layout2, editTextIdsLayout2)
                     && checkEditText(layout3, editTextIdsLayout3)
-        } else if (layout1.isVisible && layout2.isVisible && layout3.isVisible && layout4.isVisible) {
-            checkEditText(layout1, editTextIdsLayout1) && checkEditText(layout2, editTextIdsLayout2)
-                    && checkEditText(layout3, editTextIdsLayout3) && checkEditText(
-                layout4,
-                editTextIdsLayout4
-            )
+                    && checkEditText(layout4, editTextIdsLayout4)
+                    && checkEditText(layout5, editTextIdsLayout5)
+                    && checkEditText(layout6, editTextIdsLayout6)
+                    && checkEditText(layout7, editTextIdsLayout7)
         }
-
-       else if (layout1.isVisible) {
+        else if (layout1.isVisible && layout2.isVisible && layout3.isVisible && layout4.isVisible
+            && layout5.isVisible && layout6.isVisible) {
+            checkEditText(layout1, editTextIdsLayout1) && checkEditText(layout2, editTextIdsLayout2)
+                    && checkEditText(layout3, editTextIdsLayout3) && checkEditText(layout4, editTextIdsLayout4)
+                    && checkEditText(layout5, editTextIdsLayout5) && checkEditText(layout6, editTextIdsLayout6)
+        }
+        else if (layout1.isVisible && layout2.isVisible && layout3.isVisible && layout4.isVisible && layout5.isVisible) {
+            checkEditText(layout1, editTextIdsLayout1) && checkEditText(layout2, editTextIdsLayout2)
+                    && checkEditText(layout3, editTextIdsLayout3) && checkEditText(layout4, editTextIdsLayout4)
+                    && checkEditText(layout5, editTextIdsLayout5)
+        }
+        else if (layout1.isVisible && layout2.isVisible) {
+            checkEditText(layout1, editTextIdsLayout1) && checkEditText(layout2, editTextIdsLayout2)
+        }
+        else if (layout1.isVisible && layout2.isVisible && layout3.isVisible) {
+            checkEditText(layout1, editTextIdsLayout1) && checkEditText(layout2, editTextIdsLayout2)
+                    && checkEditText(layout3, editTextIdsLayout3)
+        }
+        else if (layout1.isVisible && layout2.isVisible && layout3.isVisible && layout4.isVisible) {
+            checkEditText(layout1, editTextIdsLayout1) && checkEditText(layout2, editTextIdsLayout2)
+                    && checkEditText(layout3, editTextIdsLayout3) && checkEditText(layout4, editTextIdsLayout4)
+        }
+        else if (layout1.isVisible) {
             checkEditText(layout1, editTextIdsLayout1)
         }
         return true
@@ -225,41 +196,72 @@ class CalculatorFragment : Fragment() {
         val editText21Value = binding.editTextNumber21.text.toString().toIntOrNull() ?: 1
 
 
-        if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible && binding.linearLayout4.isVisible && binding.linearLayout5.isVisible && binding.linearLayout6.isVisible && binding.linearLayout7.isVisible && editText5Value != 0 && editText8Value != 0 && editText11Value != 0 && editText14Value != 0 && editText17Value != 0 && editText20Value != 0) {
+        if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible
+            && binding.linearLayout4.isVisible && binding.linearLayout5.isVisible
+            && binding.linearLayout6.isVisible && binding.linearLayout7.isVisible
+            && editText5Value != 0 && editText8Value != 0 && editText11Value != 0
+            && editText14Value != 0 && editText17Value != 0 && editText20Value != 0) {
             total = (((editText1Value * editText2Value) +
-                    (editText4Value * editText5Value) + (editText7Value * editText8Value) + (editText10Value * editText11Value) + (editText13Value * editText14Value) + (editText16Value * editText17Value) + (editText19Value * editText20Value)) / (editText3Value + editText6Value + editText9Value + editText12Value + editText15Value + editText18Value + editText21Value)).toDouble()
-        } else if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible && binding.linearLayout4.isVisible && binding.linearLayout5.isVisible && binding.linearLayout6.isVisible && editText5Value != 0 && editText8Value != 0 && editText11Value != 0 && editText14Value != 0 && editText17Value != 0) {
+                    (editText4Value * editText5Value) + (editText7Value * editText8Value)
+                    + (editText10Value * editText11Value) + (editText13Value * editText14Value)
+                    + (editText16Value * editText17Value) + (editText19Value * editText20Value))
+                    / (editText3Value + editText6Value + editText9Value + editText12Value
+                    + editText15Value + editText18Value + editText21Value)).toDouble()
+        }
+        else if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible
+            && binding.linearLayout4.isVisible && binding.linearLayout5.isVisible
+            && binding.linearLayout6.isVisible && editText5Value != 0 && editText8Value != 0
+            && editText11Value != 0 && editText14Value != 0 && editText17Value != 0) {
             total = (((editText1Value * editText2Value) +
-                    (editText4Value * editText5Value) + (editText7Value * editText8Value) + (editText10Value * editText11Value) + (editText13Value * editText14Value) + (editText16Value * editText17Value)) / (editText3Value + editText6Value + editText9Value + editText12Value + editText15Value + editText18Value)).toDouble()
-        } else if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible && binding.linearLayout4.isVisible && binding.linearLayout5.isVisible && editText5Value != 0 && editText8Value != 0 && editText11Value != 0 && editText14Value != 0) {
+                    (editText4Value * editText5Value) + (editText7Value * editText8Value)
+                    + (editText10Value * editText11Value) + (editText13Value * editText14Value)
+                    + (editText16Value * editText17Value)) / (editText3Value + editText6Value
+                    + editText9Value + editText12Value + editText15Value + editText18Value)).toDouble()
+        }
+        else if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible
+            && binding.linearLayout4.isVisible && binding.linearLayout5.isVisible
+            && editText5Value != 0 && editText8Value != 0 && editText11Value != 0 && editText14Value != 0) {
             total = (((editText1Value * editText2Value) +
                     (editText4Value * editText5Value) + (editText7Value * editText8Value) + (editText10Value * editText11Value) + (editText13Value * editText14Value)) / (editText3Value + editText6Value + editText9Value + editText12Value + editText15Value)).toDouble()
-        } else if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible && binding.linearLayout4.isVisible && editText5Value != 0 && editText8Value != 0 && editText11Value != 0) {
+        }
+        else if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible
+            && binding.linearLayout4.isVisible && editText5Value != 0 && editText8Value != 0
+            && editText11Value != 0) {
             total = (((editText1Value * editText2Value) +
-                    (editText4Value * editText5Value) + (editText7Value * editText8Value) + (editText10Value * editText11Value)) / (editText3Value + editText6Value + editText9Value + editText12Value)).toDouble()
-        } else if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible && editText5Value != 0 && editText8Value != 0) {
+                    (editText4Value * editText5Value) + (editText7Value * editText8Value)
+                    + (editText10Value * editText11Value)) / (editText3Value + editText6Value
+                    + editText9Value + editText12Value)).toDouble()
+        }
+        else if (binding.linearLayout2.isVisible && binding.linearLayout3.isVisible
+            && editText5Value != 0 && editText8Value != 0) {
             total = (((editText1Value * editText2Value) +
-                    (editText4Value * editText5Value) + (editText7Value * editText8Value)) / (editText3Value + editText6Value + editText9Value)).toDouble()
-        } else if (binding.linearLayout2.isVisible && editText5Value != 0) {
+                    (editText4Value * editText5Value) + (editText7Value * editText8Value))
+                    / (editText3Value + editText6Value + editText9Value)).toDouble()
+        }
+        else if (binding.linearLayout2.isVisible && editText5Value != 0) {
             total = (((editText1Value * editText2Value) +
                     (editText4Value * editText5Value)) / (editText3Value + editText6Value)).toDouble()
-            // Add similar terms for other layouts if needed
-        } else if (binding.linearLayout1.isVisible && editText2Value != 0) {
+        }
+        else if (binding.linearLayout1.isVisible && editText2Value != 0) {
             total = ((editText1Value * editText2Value) / editText3Value).toDouble()
-            // Add similar terms for other layouts if needed
-        }else{
+
+        } else {
             binding.resultText.text = ""
         }
 
-        if (editText1Value <= 100 && editText4Value <= 100 && editText7Value <= 100 && editText10Value <= 100 && editText13Value <= 100 && editText16Value <= 100 && editText19Value <= 100) {
-            if (editText2Value <= editText3Value && editText5Value <= editText6Value && editText8Value <= editText9Value && editText11Value <= editText12Value && editText14Value <= editText15Value && editText17Value <= editText18Value && editText20Value <= editText21Value) {
+        if (editText1Value <= 100 && editText4Value <= 100 && editText7Value <= 100
+            && editText10Value <= 100 && editText13Value <= 100 && editText16Value <= 100
+            && editText19Value <= 100) {
+            if (editText2Value <= editText3Value && editText5Value <= editText6Value
+                && editText8Value <= editText9Value && editText11Value <= editText12Value
+                && editText14Value <= editText15Value && editText17Value <= editText18Value
+                && editText20Value <= editText21Value) {
                 gpa = total
                 showGPAResult()
-            }
-            else {
+            } else {
                 showToast("k* must be less than or equal to k")
             }
-        }  else {
+        } else {
             showToast("Subject score should not exceed 100")
         }
     }
