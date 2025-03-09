@@ -35,6 +35,7 @@ Learn about GPA from the Information Page.
 Go to the Calculation Page and enter your details to compute your GPA.
 
 📱 Screenshots
+
 🌞 Light Mode
 
 | Welcome Screen Light Mode                   | Information Screen Light Mode    |
@@ -45,7 +46,8 @@ Go to the Calculation Page and enter your details to compute your GPA.
 | ---------------------------------------     | -------------------------------- |
 | ![dark-mode-page1.png](./app//src/main/java/com/rubabe/screens/light-mode-page3.1.png) | ![dark-mode-page2.png](./app//src/main/java/com/rubabe/screens/light-mode-page3.2.png) |
 
-| Main Screen Light Mode                   | Main Screen Light Mode    |
+| Main Screen Light Mode                      | Main Screen Light Mode           |
+| ---------------------------------------     | -------------------------------- |
 | ![light-mode-page3.3.png](./app//src/main/java/com/rubabe/screens/light-mode-page3.3.png) | ![light-mode-page3.4.png](./app//src/main/java/com/rubabe/screens/light-mode-page3.4.png) |
 
 🌙 Dark Mode
@@ -55,6 +57,6 @@ Go to the Calculation Page and enter your details to compute your GPA.
 | ![dark-mode-page1.png](./app//src/main/java/com/rubabe/screens/dark-mode-page1.png) | ![dark-mode-page2.png](./app//src/main/java/com/rubabe/screens/dark-mode-page2.png) |
 
 
-| Welcome Screen Dark Mode                    | Information Screen Dark Mode          |
+| Main Screen Dark Mode                  | Main Screen Dark Mode                  |
 | ------------------------------------   | -----------------------------------    |
 | ![dark-mode-page3.png](./app//src/main/java/com/rubabe/screens/dark-mode-page3.png) | ![dark-mode-page4.png](./app//src/main/java/com/rubabe/screens/dark-mode-page4.png) |
