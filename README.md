@@ -42,7 +42,7 @@ Go to the Calculation Page and enter your details to compute your GPA.
 | ---------------------------------------     | -------------------------------- |
 | ![light-mode-page1.png](./app//src/main/java/com/rubabe/screens/light-mode-page1.png) | ![light-mode-page2.png](./app//src/main/java/com/rubabe/screens/light-mode-page2.png) |
 
-| Main Screen Light Mode |
+| Main Screen Light Mode
 | ---------------------------------------     | -------------------------------- |
 | ![dark-mode-page1.png](./app//src/main/java/com/rubabe/screens/light-mode-page3.1.png) | ![dark-mode-page2.png](./app//src/main/java/com/rubabe/screens/light-mode-page3.2.png) |
 
