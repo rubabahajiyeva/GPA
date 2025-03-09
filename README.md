@@ -1,49 +1,60 @@
-# GPA App
+📘 GPA App
 
-**GPA App** - This application is designed for GPA calculation.
+GPA App is a simple and efficient application designed to calculate your GPA easily.
 
-Features
+🚀 Features
 
-Light/Dark Mode: Users can switch between light and dark mode as per their preference.
+Light/Dark Mode: Seamlessly switch between light and dark themes based on user preference.
 
-Information Page: Provides detailed information about GPA.
+Information Page: Provides detailed insights into GPA calculations.
 
-Calculation Page: Calculates GPA based on the entered data.
+Calculation Page: Computes GPA based on user-inputted data.
 
-Structure
+🏗 Structure
 
-Screen 1 (Settings Page)
+📌 Screen 1: Settings Page
 
-Allows switching between Light and Dark mode.
+Users can toggle between Light Mode and Dark Mode.
 
-Screen 2 (Information Page)
+📌 Screen 2: Information Page
 
-Displays essential details about GPA.
+Displays essential details and guidance on GPA calculations.
 
-Screen 3 (Calculation Page)
+📌 Screen 3: Calculation Page
 
-Users enter the necessary values, and the GPA result is displayed.
+Users enter their grades and credits to obtain their GPA results.
 
-How to Use?
+📖 How to Use?
 
 Open the application.
 
-Switch between Light/Dark Mode as needed.
+Navigate to the Settings Page to switch between Light/Dark Mode.
 
-Read about GPA on the information page.
+Learn about GPA from the Information Page.
 
-Go to the calculation page and compute your GPA.
+Go to the Calculation Page and enter your details to compute your GPA.
 
-Technologies
+📱 Screenshots
+🌞 Light Mode
 
-Programming Language: Kotlin
+| Welcome Screen Light Mode                   | Information Screen Light Mode    |
+| ---------------------------------------     | -------------------------------- |
+| ![light-mode-page1.png](./app//src/main/java/com/rubabe/screens/light-mode-page1.png) | ![light-mode-page2.png](./app//src/main/java/com/rubabe/screens/light-mode-page2.png) |
 
-UI Framework: Jetpack Compose
+| Main Screen Light Mode
+| ---------------------------------------     | -------------------------------- |
+| ![dark-mode-page1.png](./app//src/main/java/com/rubabe/screens/light-mode-page3.1.png) | ![dark-mode-page2.png](./app//src/main/java/com/rubabe/screens/light-mode-page3.2.png) |
 
-## 📱 Screens
+| ---------------------------------------     | -------------------------------- |
+| ![light-mode-page3.3.png](./app//src/main/java/com/rubabe/screens/light-mode-page3.3.png) | ![light-mode-page3.4.png](./app//src/main/java/com/rubabe/screens/light-mode-page3.4.png) |
+
+🌙 Dark Mode
+
+| Welcome Screen Dark Mode                    | Information Screen Dark Mode          |
+| ---------------------------------------     | -----------------------------------   |
+| ![dark-mode-page1.png](./app//src/main/java/com/rubabe/screens/dark-mode-page1.png) | ![dark-mode-page2.png](./app//src/main/java/com/rubabe/screens/dark-mode-page2.png) |
 
 
-
-| E Screen          | Main Screen                    |
-| ------------------------------ | ------------------------------ |
-| ![doctor_details.png](./app//src/main/screens/page_1.png) | ![main_page.png](./app//src/main/screens/page_2.png) |
+| Main Screen Dark Mode
+| ------------------------------------   | -----------------------------------    |
+| ![dark-mode-page3.png](./app//src/main/java/com/rubabe/screens/dark-mode-page3.png) | ![dark-mode-page4.png](./app//src/main/java/com/rubabe/screens/dark-mode-page4.png) |
